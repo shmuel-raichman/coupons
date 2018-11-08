@@ -5,12 +5,14 @@ package shmulik.coupons_manager.final_project.entities;
 
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
+import javax.persistence.Id;
 
-import org.springframework.data.annotation.Id;
+//import org.springframework.data.annotation.Id;
 
 /**
  * @author Android
@@ -20,27 +22,112 @@ import org.springframework.data.annotation.Id;
 @Table(name = "coupons")
 public class Coupon {
 	
-//	ID – LONG, PK
+//	ID ï¿½ LONG, PK
 //	TITLE - STRING ( short description )
-//	START_DATE – DATE (creation date in the system )
-//	END_DATE – DATE (Expiration date )
-//	AMOUNT – INTEGER (amount of coupons in stock)
-//	TYPE – ENUM (STRING) ( category - food,electrecity, vication , fun ) ----------------------
-//	MESSAGE – STRING (coupon describe text )
-//	PRICE – DOUBLE (coupon price )
-//	IMAGE – STRING (link)
+//	START_DATE ï¿½ DATE (creation date in the system )
+//	END_DATE ï¿½ DATE (Expiration date )
+//	AMOUNT ï¿½ INTEGER (amount of coupons in stock)
+//	TYPE ï¿½ ENUM (STRING) ( category - food,electrecity, vication , fun ) ----------------------
+//	MESSAGE ï¿½ STRING (coupon describe text )
+//	PRICE ï¿½ DOUBLE (coupon price )
+//	IMAGE ï¿½ STRING (link)
 	
-	@Id
+	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
 	// TO DO add annotations to make it auto generate table.
 	//private long id;
+	@Column(name = "title")
 	private String title;
+	
+	@Column(name = "start_date")
 	private Date startDate;
+	
+	@Column(name = "start_date", insertable=false, updatable=false)
 	private Date endDate;
+	
+	@Column(name = "amount")
 	private int amount;
+	
+	@Column(name = "message")
 	private String message;
+	
+	@Column(name = "price", precision = 2)
 	private double price;
+	
+	@Column(name = "image_link")
 	private String imageLink;
+	
+	
+	
+	public Coupon () {
+		
+	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
+	public String getMessage() {
+		return message;
+	}
+
+	public void setMessage(String message) {
+		this.message = message;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
+	}
+
+	public String getImageLink() {
+		return imageLink;
+	}
+
+	public void setImageLink(String imageLink) {
+		this.imageLink = imageLink;
+	}
+	
+	
 }
