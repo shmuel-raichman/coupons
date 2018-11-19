@@ -17,7 +17,6 @@ before_script:
 build:
   stage: build
   script: gradle --build-cache assemble
-  script: git checkout clean
   artifacts:
     paths:
     - '*.jar'
