@@ -10,6 +10,7 @@ import shmulik.coupons_manager.final_project.entities.Coupon;
 import shmulik.coupons_manager.final_project.services.CouponService;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 //@CrossOrigin(origins = "http://localhost:4200")
@@ -22,7 +23,15 @@ public class CouponController {
 
     @GetMapping
     public List<Coupon> FindAllItems() {
-        return couponService.findAllItems();
+        List tmp = couponService.findAllItems();
+        List<Coupon> list = new ArrayList<Coupon>();
+        if(tmp.isEmpty()){
+            list.add(new Coupon());
+        } else{
+            return tmp;
+        }
+        return list;
+        //return couponService.findAllItems();
     }
 
     @GetMapping("{id}")
