@@ -20,7 +20,7 @@ build:
   script: git checkout clean
   artifacts:
     paths:
-    - *.jar
+    - '*.jar'
   only:
     - clean
   cache:
