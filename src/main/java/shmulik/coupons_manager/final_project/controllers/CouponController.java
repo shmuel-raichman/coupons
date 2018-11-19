@@ -13,16 +13,9 @@ import shmulik.coupons_manager.final_project.services.CouponService;
 import java.util.List;
 
 //@CrossOrigin(origins = "http://localhost:4200")
-@RestController  
-@RequestMapping("/rest/api/testing")
-public class TesterController {
-
-
-//    @GetMapping("/health")
-//    public String answare() {
-//        String str = "hi first fire.";
-//        return str;
-//    }
+@RestController
+@RequestMapping("/rest/api/coupons")
+public class CouponController {
 
     @Autowired
     private CouponService couponService;
