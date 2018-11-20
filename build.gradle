@@ -4,16 +4,21 @@ buildscript {
 	}
 	repositories {
 		mavenCentral()
+		jcenter()
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath 'com.github.jengelman.gradle.plugins:shadow:2.0.4'
 	}
 }
+
+
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.github.johnrengelman.shadow'
 
 group = 'shmulik.coupons_manager'
 version = '0.0.1-SNAPSHOT'
@@ -30,6 +35,15 @@ dependencies {
 	runtimeOnly('org.springframework.boot:spring-boot-devtools')
 	runtimeOnly('mysql:mysql-connector-java')
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
+}
+
+shadowJar {
+	manifest {
+		attributes 'Main-Class': 'FinalProjectApplication'
+	}
+	//baseName = 'shadow'
+	version = null
+	classifier = ''
 }
 
 test {
