@@ -9,4 +9,6 @@ public interface CouponService {
     List<Coupon> findAllItems();
 
     Coupon findItemById(long itemId);
+
+    Coupon createOrder(Coupon coupon);
 }
