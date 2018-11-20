@@ -15,27 +15,27 @@ variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
 stages:
-  - build
+#  - build
   - package
   - test
 #  - deploy
 
-before_script:
-  - export GRADLE_USER_HOME=`pwd`/.gradle
-
-build:
-  image: gradle:alpine
-  stage: build
-  script: gradle --build-cache assemble
-  artifacts:
-    paths:
-    - './build/libs/final_project-0.0.1-SNAPSHOT.jar'
-  cache:
-    key: "$CI_COMMIT_REF_NAME"
-    policy: push
-    paths:
-      - build
-      - .gradle 
+#before_script:
+#  - export GRADLE_USER_HOME=`pwd`/.gradle
+#
+#build:
+#  image: gradle:alpine
+#  stage: build
+#  script: gradle --build-cache assemble
+#  artifacts:
+#    paths:
+#    - './build/libs/final_project-0.0.1-SNAPSHOT.jar'
+#  cache:
+#    key: "$CI_COMMIT_REF_NAME"
+#    policy: push
+#    paths:
+#      - build
+#      - .gradle
 
 docker-build:
   stage: package
