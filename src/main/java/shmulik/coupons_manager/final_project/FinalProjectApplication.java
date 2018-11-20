@@ -9,9 +9,6 @@ import org.springframework.stereotype.Component;
 
 
 @SpringBootApplication
-@ComponentScan({"shmulik.coupons_manager.final_project"})
-@EntityScan("shmulik.coupons_manager.final_project")
-@EnableJpaRepositories("shmulik.coupons_manager.final_project")
 public class FinalProjectApplication {
 
 	public static void main(String[] args) {

@@ -18,12 +18,12 @@ public class CouponController {
     private CouponService couponService;
 
     @GetMapping
-    public List<Coupon> FindAllItems() {
+    public List<Coupon> findAllItems() {
         return couponService.findAllItems();
     }
 
     @GetMapping("{id}")
-    public Coupon FindItemById(@PathVariable("id") int itemId){
+    public Coupon findItemById(@PathVariable("id") int itemId){
         return couponService.findItemById(itemId);
     }
 
