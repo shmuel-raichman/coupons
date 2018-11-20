@@ -15,27 +15,27 @@ variables:
   GRADLE_OPTS: "-Dorg.gradle.daemon=false"
 
 stages:
-#  - build
+  - build
   - package
   - test
 #  - deploy
 
-#before_script:
-#  - export GRADLE_USER_HOME=`pwd`/.gradle
-#
-#build:
-#  image: gradle:alpine
-#  stage: build
-#  script: gradle --build-cache assemble
-#  artifacts:
-#    paths:
-#    - './build/libs/final_project-0.0.1-SNAPSHOT.jar'
-#  cache:
-#    key: "$CI_COMMIT_REF_NAME"
-#    policy: push
-#    paths:
-#      - build
-#      - .gradle
+before_script:
+  - export GRADLE_USER_HOME=`pwd`/.gradle
+
+build:
+  image: gradle:alpine
+  stage: build
+  script: gradle --build-cache assemble
+  artifacts:
+    paths:
+    - './build/libs/final_project-0.0.1-SNAPSHOT.jar'
+  cache:
+    key: "$CI_COMMIT_REF_NAME"
+    policy: push
+    paths:
+      - build
+      - .gradle
 
 docker-build:
   stage: package
@@ -54,34 +54,34 @@ test:
     paths:
       - build
       - .gradle
----
-image: docker:latest
-services:
-  - docker:dind
-
-variables:
-  DOCKER_DRIVER: overlay
-  SPRING_PROFILES_ACTIVE: gitlab-ci
-
-stages:
-  - build
-  - package
-  - deploy
-
-maven-build:
-  image: maven:3-jdk-8
-  stage: build
-  script: "mvn package -B"
-  artifacts:
-    paths:
-      - target/*.jar
-
-docker-build:
-  stage: package
-  script:
-    - docker build -t registry.gitlab.com/marcolenzo/actuator-sample .
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
-    - docker push registry.gitlab.com/marcolenzo/actuator-sample
+#---
+#image: docker:latest
+#services:
+#  - docker:dind
+#
+#variables:
+#  DOCKER_DRIVER: overlay
+#  SPRING_PROFILES_ACTIVE: gitlab-ci
+#
+#stages:
+#  - build
+#  - package
+#  - deploy
+#
+#maven-build:
+#  image: maven:3-jdk-8
+#  stage: build
+#  script: "mvn package -B"
+#  artifacts:
+#    paths:
+#      - target/*.jar
+#
+#docker-build:
+#  stage: package
+#  script:
+#    - docker build -t registry.gitlab.com/marcolenzo/actuator-sample .
+#    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
+#    - docker push registry.gitlab.com/marcolenzo/actuator-sample
 #---
 # This file is a template, and might need editing before it works on your project.
 # Official docker image.
