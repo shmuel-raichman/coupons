@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import shmulik.coupons_manager.final_project.entities.Coupon;
 import shmulik.coupons_manager.final_project.services.CouponService;
+import shmulik.coupons_manager.final_project.services.CouponServiceImpl;
 
 
 import java.util.List;
@@ -14,8 +15,12 @@ import java.util.List;
 @RequestMapping("/rest/api/coupons")
 public class CouponController {
 
+//    @Autowired
+//    private CouponService couponService;
+
+
     @Autowired
-    private CouponService couponService;
+    private CouponServiceImpl couponService;
 
     @GetMapping
     public List<Coupon> findAllItems() {
