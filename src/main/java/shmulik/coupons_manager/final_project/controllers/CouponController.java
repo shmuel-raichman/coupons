@@ -2,10 +2,7 @@
 package shmulik.coupons_manager.final_project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import shmulik.coupons_manager.final_project.entities.Coupon;
 import shmulik.coupons_manager.final_project.services.CouponService;
 
@@ -23,19 +20,16 @@ public class CouponController {
 
     @GetMapping
     public List<Coupon> FindAllItems() {
-        List tmp = couponService.findAllItems();
-        List<Coupon> list = new ArrayList<Coupon>();
-        if(tmp.isEmpty()){
-            list.add(new Coupon());
-        } else{
-            return tmp;
-        }
-        return list;
-        //return couponService.findAllItems();
+        return couponService.findAllItems();
     }
 
     @GetMapping("{id}")
     public Coupon FindItemById(@PathVariable("id") int itemId){
         return couponService.findItemById(itemId);
+    }
+
+    @PostMapping
+    public Coupon createOrder(@RequestBody Coupon coupon) {
+        return couponService.createOrder(coupon);
     }
 }
