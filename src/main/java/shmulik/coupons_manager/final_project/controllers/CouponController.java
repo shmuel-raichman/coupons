@@ -7,7 +7,6 @@ import shmulik.coupons_manager.final_project.entities.Coupon;
 import shmulik.coupons_manager.final_project.services.CouponService;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 //@CrossOrigin(origins = "http://localhost:4200")
