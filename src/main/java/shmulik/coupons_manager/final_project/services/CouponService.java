@@ -10,5 +10,5 @@ public interface CouponService {
 
     Coupon findItemById(long itemId);
 
-    Coupon createOrder(Coupon coupon);
+    Coupon createCoupon(Coupon coupon);
 }

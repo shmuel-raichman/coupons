@@ -29,7 +29,7 @@ public class CouponController {
     }
 
     @PostMapping
-    public Coupon createOrder(@RequestBody Coupon coupon) {
+    public Coupon createCoupon(@RequestBody Coupon coupon) {
         return couponService.createOrder(coupon);
     }
 }
