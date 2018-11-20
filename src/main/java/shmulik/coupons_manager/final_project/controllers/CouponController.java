@@ -30,6 +30,6 @@ public class CouponController {
 
     @PostMapping
     public Coupon createCoupon(@RequestBody Coupon coupon) {
-        return couponService.createOrder(coupon);
+        return couponService.createCoupon(coupon);
     }
 }
