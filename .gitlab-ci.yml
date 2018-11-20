@@ -46,6 +46,7 @@ docker-build:
     - docker push "$CI_REGISTRY_IMAGE"
 
 test:
+  image: gradle:alpine
   stage: test
   script: gradle check
   cache:
