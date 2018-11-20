@@ -29,7 +29,7 @@ build:
   script: gradle --build-cache assemble
   artifacts:
     paths:
-    - 'build/libs/final_project-0.0.1-SNAPSHOT.jar'
+    - './build/libs/final_project-0.0.1-SNAPSHOT.jar'
   cache:
     key: "$CI_COMMIT_REF_NAME"
     policy: push
