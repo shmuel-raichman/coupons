@@ -17,7 +17,8 @@ variables:
 stages:
   - build
   - package
-  - deploy
+  - test
+#  - deploy
 
 before_script:
   - export GRADLE_USER_HOME=`pwd`/.gradle
