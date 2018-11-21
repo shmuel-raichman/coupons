@@ -15,12 +15,9 @@ import java.util.List;
 @RequestMapping("/rest/api/coupons")
 public class CouponController {
 
-//    @Autowired
-//    private CouponService couponService;
-
-
     @Autowired
-    private CouponServiceImpl couponService;
+    private CouponService couponService;
+
 
     @GetMapping
     public List<Coupon> findAllItems() {
