@@ -50,7 +50,7 @@ deploy:
   stage: deploy
   script:
     - ls -la && pwd
-    - apt update && apt install -y openssh-server
+    - apk update & apk add openssh
     - ssh -i .gradle/id_rsa $couponsVmAdrress docker pull $CI_REGISTRY_IMAGE
     - ssh -i .gradle/id_rsa $couponsVmAdrress docker stop my-app-instance
     - ssh -i .gradle/id_rsa $couponsVmAdrress docker run -dit -p 8080:8080 -p 2220:2222 --name my-app-instance $CI_REGISTRY_IMAGE
