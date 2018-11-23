@@ -3,14 +3,11 @@
  */
 package shmulik.coupons_manager.final_project.entities;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Table;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 //import org.springframework.data.annotation.Id;
 
@@ -19,7 +16,7 @@ import javax.persistence.Id;
  *
  */
 @Entity
-@Table(name = "coupons")
+@Table(name = "coupons" ,uniqueConstraints={@UniqueConstraint(columnNames={"title"})})
 public class Coupon {
 	
 //	ID � LONG, PK
@@ -38,7 +35,7 @@ public class Coupon {
 	
 	// TO DO add annotations to make it auto generate table.
 	//private long id;
-	@Column(name = "title")
+	@Column(name = "title" , unique=true)
 	private String title;
 	
 	@Column(name = "start_date")
