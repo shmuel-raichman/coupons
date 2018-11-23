@@ -50,10 +50,10 @@ deploy:
   stage: deploy
   script:
     - ls -la && pwd
-    - apk update & apk add openssh
-    - ssh -i ./gradle/id_rsa 104.196.156.155 docker pull $CI_REGISTRY_IMAGE
-    - ssh -i ./gradle/id_rsa 104.196.156.155 docker stop my-app-instance
-    - ssh -i ./gradle/id_rsa 104.196.156.155 docker run -dit -p 8080:8080 -p 2220:2222 --name my-app-instance $CI_REGISTRY_IMAGE
+    - apk add openssh
+    - ssh -i ./gradle/id_rsa sem@104.196.156.155 docker pull $CI_REGISTRY_IMAGE
+    - ssh -i ./gradle/id_rsa sem@104.196.156.155 docker stop my-app-instance
+    - ssh -i ./gradle/id_rsa sem@104.196.156.155 docker run -dit -p 8080:8080 -p 2220:2222 --name my-app-instance $CI_REGISTRY_IMAGE
     #- docker build --pull -t "$CI_REGISTRY_IMAGE" .
     #- docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
 
