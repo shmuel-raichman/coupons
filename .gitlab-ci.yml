@@ -46,6 +46,8 @@ docker-build:
     - docker build --pull -t "$CI_REGISTRY_IMAGE" .
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker push "$CI_REGISTRY_IMAGE"
+    - docker login -u "$COUPONS_REGISTRY_USER" -p "$COUPONS_REGISTRY_PASSWORD"
+    - docker push "$CI_REGISTRY_IMAGE"
   #when: manual
 
 deploy:
