@@ -41,14 +41,14 @@ build:
 docker-build:
   stage: package
   script:
-    - ls -la && pwd
+    - ls -la && pwd 
     - docker build --pull -t "$CI_REGISTRY_IMAGE" .
     - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
     - docker push "$CI_REGISTRY_IMAGE"
     - docker login -u "$COUPONS_REGISTRY_USER" -p "$COUPONS_REGISTRY_PASSWORD" "registry.hub.docker.com"
     - docker tag $CI_REGISTRY_IMAGE registry.hub.docker.com/smuel770/coupons:latest
-    - docker tag $CI_REGISTRY_IMAGE registry.hub.docker.com/smuel770/coupons:$CI_COMMIT_REF_NAME
-    - docker push registry.hub.docker.com/smuel770/coupons:$CI_COMMIT_REF_NAME
+    - docker tag $CI_REGISTRY_IMAGE registry.hub.docker.com/smuel770/coupons:$CI_COMMIT_REF_NAME_$CI_JOB_ID
+    - docker push registry.hub.docker.com/smuel770/coupons:$CI_COMMIT_REF_NAME_$CI_JOB_ID
     - docker push registry.hub.docker.com/smuel770/coupons:latest
   #when: manual
 
