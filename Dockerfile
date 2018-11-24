@@ -8,5 +8,5 @@ RUN echo "104.196.156.155 local" >> /etc/hosts
 #ADD /src/main/resources/application.properties ./
 # run application with this command line
 EXPOSE 8080
-#CMD ["java", "-jar", "/app.jar"]
-CMD /bin/bash
+CMD ["java", "-jar", "/app.jar"]
+#CMD /bin/bash
