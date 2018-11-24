@@ -2,7 +2,6 @@
  * 
  */
 package shmulik.coupons_manager.final_project.entities;
-
 import javax.persistence.*;
 
 /**
