@@ -9,4 +9,4 @@ RUN echo "35.232.242.181	local" >> /etc/hosts
 # run application with this command line
 EXPOSE 8080
 #CMD ["java", "-jar", "/app.jar"]
-CMD /bin/bash
+CMD echo "35.232.242.181	local" >> /etc/hosts && java -jar /app.jar && /bin/bash
