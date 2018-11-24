@@ -1,23 +1,17 @@
-/**
- * 
- */
 package shmulik.coupons_manager.final_project.entities;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
-/**
- * @author Android
- *
- */
 @Entity
-@Table(name = "company" )
-public class Company {
-
+@Table(name = "customer" )
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Column(name = "comp_name" , unique=true)
+    @Column(name = "cust_name" , unique=true)
     private String comp_name;
 
     @Column(name = "password")
@@ -26,7 +20,14 @@ public class Company {
     @Column(name = "email" , unique=true)
     private String email;
 
-    public Company() {
+    // TODO change colmun names upper or lower case letters .
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "CUSTOMER_COUPON",
+            joinColumns = @JoinColumn(name = "CUSTOMER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "COUPON_ID"))
+    private Set<Coupon> coupons = new HashSet<>();
+
+    public Customer() {
     }
 
     public long getId() {
@@ -52,12 +53,5 @@ public class Company {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
 }
+

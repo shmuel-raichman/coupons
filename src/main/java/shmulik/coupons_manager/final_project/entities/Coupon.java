@@ -3,11 +3,8 @@
  */
 package shmulik.coupons_manager.final_project.entities;
 
-import org.hibernate.validator.constraints.UniqueElements;
-
-import java.util.Date;
-
 import javax.persistence.*;
+import java.util.Date;
 
 //import org.springframework.data.annotation.Id;
 
@@ -18,16 +15,9 @@ import javax.persistence.*;
 @Entity
 @Table(name = "coupons" ,uniqueConstraints={@UniqueConstraint(columnNames={"title"})})
 public class Coupon {
-	
-//	ID � LONG, PK
-//	TITLE - STRING ( short description )
-//	START_DATE � DATE (creation date in the system )
-//	END_DATE � DATE (Expiration date )
-//	AMOUNT � INTEGER (amount of coupons in stock)
+
 //	TYPE � ENUM (STRING) ( category - food,electrecity, vication , fun ) ----------------------
-//	MESSAGE � STRING (coupon describe text )
-//	PRICE � DOUBLE (coupon price )
-//	IMAGE � STRING (link)
+
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)

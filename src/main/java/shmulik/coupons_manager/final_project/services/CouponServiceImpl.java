@@ -34,4 +34,16 @@ public class CouponServiceImpl implements CouponService {
         couponRepo.save(coupon);
         return coupon;
     }
+
+    @Override
+    @Transactional
+    public boolean deleteCouponById(long id) {
+        if(couponRepo.findById(id) == null) {
+            return false;
+        }
+        else {
+            couponRepo.deleteById(id);
+            return true;
+        }
+    }
 }

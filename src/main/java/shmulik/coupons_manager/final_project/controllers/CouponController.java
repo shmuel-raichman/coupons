@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import shmulik.coupons_manager.final_project.entities.Coupon;
 import shmulik.coupons_manager.final_project.services.CouponService;
-import shmulik.coupons_manager.final_project.services.CouponServiceImpl;
-
 
 import java.util.List;
 
@@ -33,4 +31,10 @@ public class CouponController {
     public Coupon createCoupon(@RequestBody Coupon coupon) {
         return couponService.createCoupon(coupon);
     }
+
+    @DeleteMapping("{id}")
+    public boolean deleteCouponById(@PathVariable("id") int id) {
+        return couponService.deleteCouponById(id);
+    }
+
 }

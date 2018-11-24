@@ -11,4 +11,6 @@ public interface CouponService {
     Coupon findItemById(long itemId);
 
     Coupon createCoupon(Coupon coupon);
+
+    boolean deleteCouponById(long itemId);
 }
