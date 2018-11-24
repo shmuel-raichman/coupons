@@ -27,7 +27,7 @@ build:
   image: gradle:alpine
   stage: build
   script: gradle --build-cache assemble
-  when: manual
+  #when: manual
   artifacts:
     paths:
     - './build/libs/final_project-0.0.1-SNAPSHOT.jar'
