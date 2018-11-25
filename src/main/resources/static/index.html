@@ -55,7 +55,7 @@
       <header class="jumbotron my-4">
         <h1 class="display-3">A Warm Welcome!</h1>
         <p class="lead" >this site is for my java course project WORK IN PROGRESS Nothing is working here for now</p>
-        <a href="#" class="btn btn-primary btn-lg">Call to action!</a>
+        <a href="http://35.243.170.169:8080/rest/api/coupons/" class="btn btn-primary btn-lg">Call to action!</a>
       </header>
 
       <!-- Page Features -->
@@ -66,7 +66,25 @@
             <img class="card-img-top" src="http://placehold.it/500x325" alt="">
             <div class="card-body">
               <h4 class="card-title">Card title</h4>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+              <form action="http://35.243.170.169:8080/rest/api/coupons/" method="POST" role="form" class="form-horizontal">
+                <div class="form-group">
+                  <label for="searchterm" class="col-sm-2 control-label">tilte</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="searchterm" name="searchterm">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="searchterm" class="col-sm-2 control-label">amaount</label>
+                  <div class="col-sm-10">
+                    <input type="text" class="form-control" id="searchterm" name="searchterm">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">add coupon</button>
+                  </div>
+                </div>
+              </form>
             </div>
             <div class="card-footer">
               <a href="#" class="btn btn-primary">Find Out More!</a>
