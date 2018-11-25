@@ -94,7 +94,7 @@
             </div>
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" class="btn btn-default">add coupon</button>
+                <button type="submit" id="postcoupon" class="btn btn-default">add coupon</button>
               </div>
             </div>
           </form>
@@ -172,39 +172,47 @@
     <script>
       // B"H 
 
-        var title = $('#title').val();
-        var amount = $('#amount').val();
-        var message = $('#message').val();
-        var price = $('#price').val();
-        var imageLink = $('#imageLink').val();
-        //var endDate = $('#endDate').val();
 
+        $( "#searchForm" ).submit(function( event ) {
+          //alert( "Handler for .submit() called." );
 
-        data = {
-            "title": title,
-            "amount": amount,
-            "message": message,
-            "price": 105,
-            "imageLink": imageLink
-            }
+            var title = $('#title').val();
+            var amount = $('#amount').val();
+            var message = $('#message').val();
+            var price = $('#price').val();
+            var imageLink = $('#imageLink').val();
+            //var endDate = $('#endDate').val();
+
+            data = {
+                "title": title,
+                "amount": amount,
+                "message": message,
+                "price": 105,
+                "imageLink": imageLink
+                }
+                
+            $.ajax({
+              type: "POST",
+              url: "http://35.243.170.169:8080/rest/api/coupons",
+              // The key needs to match your method's input parameter (case-sensitive).
+              data: JSON.stringify( data ),
+              contentType: "application/json; charset=utf-8",
+              dataType: "json",
+              success: function(data){$( "#resultsAdd" ).append( data );},
+              failure: function(errMsg) {
+                  alert(errMsg);
+              }
+          });
+          event.preventDefault();
+        }); 
+        
 
         //data: JSON.stringify({ "userName": userName, "password" : password })
         //var data = {bla,lab}
         //var data =  '{ "title": bla }';
         //contentType: 'application/json'
 
-        $.ajax({
-            type: "POST",
-            url: "http://35.243.170.169:8080/rest/api/coupons",
-            // The key needs to match your method's input parameter (case-sensitive).
-            data: JSON.stringify( data ),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function(data){$( "#resultsAdd" ).append( data );},
-            failure: function(errMsg) {
-                alert(errMsg);
-            }
-        });
+        
     </script>
 
 
