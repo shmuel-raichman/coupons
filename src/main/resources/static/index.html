@@ -66,7 +66,7 @@
             <img class="card-img-top" src="http://placehold.it/500x325" alt="">
             <div class="card-body">
               <h4 class="card-title">Card title</h4>
-              <form action="http://35.243.170.169:8080/rest/api/coupons/" method="POST" enctype="application/json" role="form" class="form-horizontal">
+              <form action="/" id="searchForm" role="form" class="form-horizontal">
                 <div class="form-group">
                   <label for="searchterm" class="col-sm-2 control-label">tilte</label>
                   <div class="col-sm-10">
@@ -148,6 +148,28 @@
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Attach a submit handler to the form
+      $( "#searchForm" ).submit(function( event ) {
+      
+        // Stop form from submitting normally
+        event.preventDefault();
+      
+        // Get some values from elements on the page:
+        var $form = $( this ),
+          term = $form.find( "input[name='searchterm']" ).val(),
+          url = "http://35.243.170.169:8080/rest/api/coupons/";//$form.attr( "action" );
+      
+        // Send the data using post
+        var posting = $.post( url, { title: term } );
+      
+        // Put the results in a div
+        posting.done(function( data ) {
+          var content = $( data ).find( "#content" );
+          $( "#result" ).empty().append( content );
+        });
+      });
+    </script>
 
   </body>
 
