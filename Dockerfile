@@ -8,4 +8,4 @@ RUN apt update && apt install -y vim
 EXPOSE 8080
 
 # run application with this command line
-CMD echo "35.232.242.181	local" >> /etc/hosts && java -jar /app.jar && /bin/bash
+CMD echo "35.243.170.169    local" >> /etc/hosts && java -jar /app.jar && /bin/bash
