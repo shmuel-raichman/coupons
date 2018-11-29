@@ -61,7 +61,7 @@
       <!-- Page Features -->
       <div class="row text-center">
         <div>
-          <form action="/http://35.243.170.169:8080/rest/api/coupons" id="searchForm" role="form" class="form-horizontal">
+          <form action="rest/api/coupons" id="searchForm" role="form" class="form-horizontal">
             <div class="form-group">
               <label for="searchterm" class="col-sm-2 control-label">tilte</label>
               <div class="col-sm-10">
@@ -94,7 +94,7 @@
             </div>
             <div class="form-group">
               <div class="col-sm-offset-2 col-sm-10">
-                <button type="submit" id="postcoupon" class="btn btn-default">add coupon</button>
+                <button type="button" id="postcoupon" class="btn btn-default">add coupon</button>
               </div>
             </div>
           </form>
@@ -118,7 +118,7 @@
             <img class="card-img-top" src="http://placehold.it/500x325" alt="">
             <div class="card-body">
               <h4 class="card-title">Card title</h4>
-              <p class="card-text" id="resultsAdd"></p>
+              <p class="card-text" ></p>
             </div>
             <div class="card-footer">
               <a href="#" class="btn btn-primary">Find Out More!</a>
@@ -173,7 +173,7 @@
       // B"H 
 
 
-        $( "#searchForm" ).submit(function( event ) {
+        $( "#searchForm" ).click(function( event ) {
           //alert( "Handler for .submit() called." );
 
             var title = $('#title').val();
@@ -187,13 +187,13 @@
                 "title": title,
                 "amount": amount,
                 "message": message,
-                "price": 105,
+                "price": price,
                 "imageLink": imageLink
                 }
                 
             $.ajax({
               type: "POST",
-              url: "http://35.243.170.169:8080/rest/api/coupons",
+              url: "rest/api/coupons/createcoupon",
               // The key needs to match your method's input parameter (case-sensitive).
               data: JSON.stringify( data ),
               contentType: "application/json; charset=utf-8",
