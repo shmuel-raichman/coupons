@@ -198,12 +198,14 @@
               data: JSON.stringify( data ),
               contentType: "application/json; charset=utf-8",
               dataType: "json",
-              success: function(data){$( "#resultsAdd" ).append( data );},
+              success: function(data){
+              $( "#resultsAdd" ).append( data );
+              },
               failure: function(errMsg) {
                   alert(errMsg);
               }
           });
-          event.preventDefault();
+          //event.preventDefault();
         }); 
         
 

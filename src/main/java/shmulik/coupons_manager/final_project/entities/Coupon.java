@@ -13,14 +13,14 @@ import java.util.Date;
  *
  */
 @Entity
-@Table(name = "coupons" ,uniqueConstraints={@UniqueConstraint(columnNames={"title"})})
+@Table(name = "coupons")
 public class Coupon {
 
 //	TYPE � ENUM (STRING) ( category - food,electrecity, vication , fun ) ----------------------
 
 	
 	@Id 
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id;
 	
 	// TO DO add annotations to make it auto generate table.
@@ -46,10 +46,18 @@ public class Coupon {
 	@Column(name = "image_link")
 	private String imageLink;
 	
-	
-	
+	private String error;
+
+	public String getError() {
+		return error;
+	}
+
 	public Coupon () {
 		
+	}
+
+	public Coupon (String errorMsg) {
+		this.error = errorMsg;
 	}
 
 	public long getId() {

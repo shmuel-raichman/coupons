@@ -8,9 +8,10 @@ import java.util.Set;
 @Table(name = "customer" )
 public class Customer {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private long id;
 
+    //TODO fix name not created.
     @Column(name = "cust_name" , unique=true)
     private String comp_name;
 
@@ -27,7 +28,18 @@ public class Customer {
             inverseJoinColumns = @JoinColumn(name = "COUPON_ID"))
     private Set<Coupon> coupons = new HashSet<>();
 
+    private String error;
+
+
     public Customer() {
+    }
+
+    public Customer (String errorMsg) {
+        this.error = errorMsg;
+    }
+
+    public String getError() {
+        return error;
     }
 
     public long getId() {
@@ -52,6 +64,14 @@ public class Customer {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
 

@@ -7,7 +7,7 @@
 //import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RestController;
 //import shmulik.coupons_manager.final_project.entities.Coupon;
-//import shmulik.coupons_manager.final_project.services.CouponService;
+//import shmulik.coupons_manager.final_project.services.interfaces.CouponService;
 //
 //
 //import java.util.List;
@@ -29,11 +29,11 @@
 //
 //    @GetMapping
 //    public List<Coupon> FindAllItems() {
-//        return couponService.findAllItems();
+//        return couponService.findAll();
 //    }
 //
 //    @GetMapping("{id}")
 //    public Coupon FindItemById(@PathVariable("id") int itemId){
-//        return couponService.findItemById(itemId);
+//        return couponService.findById(itemId);
 //    }
 //}
