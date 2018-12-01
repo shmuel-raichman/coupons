@@ -2,6 +2,7 @@
  * 
  */
 package shmulik.coupons_manager.final_project.entities;
+
 import javax.persistence.*;
 
 /**
@@ -13,11 +14,11 @@ import javax.persistence.*;
 public class Company {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
-    @Column(name = "comp_name" , unique=true)
-    private String comp_name;
+    @Column(name = "compName" , unique=true)
+    private String compName;
 
     @Column(name = "password")
     private String password;
@@ -25,7 +26,17 @@ public class Company {
     @Column(name = "email" , unique=true)
     private String email;
 
+    private String error;
+
     public Company() {
+    }
+
+    public Company (String errorMsg) {
+        this.error = errorMsg;
+    }
+
+    public String getError() {
+        return error;
     }
 
     public long getId() {
@@ -36,12 +47,12 @@ public class Company {
         this.id = id;
     }
 
-    public String getComp_name() {
-        return comp_name;
+    public String getCompName() {
+        return compName;
     }
 
-    public void setComp_name(String comp_name) {
-        this.comp_name = comp_name;
+    public void setCompName(String compName) {
+        this.compName = compName;
     }
 
     public String getPassword() {

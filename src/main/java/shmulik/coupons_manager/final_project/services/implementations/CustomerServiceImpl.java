@@ -31,32 +31,32 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @Transactional
     public Customer createCustomer(Customer customer) {
-        if(customer.getId() == 0) {
+//        if(customer.getId() == 0) {
             customerService.save(customer);
             return customer;
-        }
-        else {
-            return new Customer("customer already exist: can't update using this method try updateCoupon.");
-        }
+//        }
+//        else {
+//            return new Customer("customer already exist: can't update using this method try updateCoupon.");
+//        }
     }
 
     @Override
     @Transactional
     public Customer updateCustomer(Customer customer) {
-        if(customerService.findById(customer.getId()) == null) {
-            Customer error = new Customer("customer not exist exist : can't create coupon using this method try createCustomer.");
-            //error.setAmount((Integer)null);
-            return error;
-
-        }
-        else if(customer.getId() == 0){
-            Customer error = new Customer("no id to update: can't update unknown customer please supply ID.");
-            //error.setAmount((Integer)null);
-            return error;
-        } else {
+//        if(customerService.findById(customer.getId()) == null) {
+//            Customer error = new Customer("customer not exist exist : can't create coupon using this method try createCustomer.");
+//            //error.setAmount((Integer)null);
+//            return error;
+//
+//        }
+//        else if(customer.getId() == 0){
+//            Customer error = new Customer("no id to update: can't update unknown customer please supply ID.");
+//            //error.setAmount((Integer)null);
+//            return error;
+//        } else {
             customerService.save(customer);
             return customer;
-        }
+//        }
     }
 
 

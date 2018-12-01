@@ -20,7 +20,7 @@ public class Coupon {
 
 	
 	@Id 
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
 	
 	// TO DO add annotations to make it auto generate table.

@@ -7,13 +7,14 @@ import java.util.Set;
 @Entity
 @Table(name = "customer" )
 public class Customer {
+    // strategy=GenerationType.IDENTITY
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
     //TODO fix name not created.
-    @Column(name = "cust_name" , unique=true)
-    private String comp_name;
+    @Column(name = "custName" , unique=true)
+    private String custName;
 
     @Column(name = "password")
     private String password;
@@ -50,12 +51,12 @@ public class Customer {
         this.id = id;
     }
 
-    public String getComp_name() {
-        return comp_name;
+    public String getCustName() {
+        return custName;
     }
 
-    public void setComp_name(String comp_name) {
-        this.comp_name = comp_name;
+    public void setCustName(String custName) {
+        this.custName = custName;
     }
 
     public String getPassword() {

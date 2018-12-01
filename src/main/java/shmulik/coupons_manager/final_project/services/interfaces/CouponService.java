@@ -14,5 +14,5 @@ public interface CouponService {
 
     Coupon updateCoupon(Coupon coupon);
 
-    boolean deleteCouponById(long itemId);
+    boolean deleteCouponById(long id);
 }
