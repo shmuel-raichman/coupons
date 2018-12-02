@@ -29,6 +29,7 @@ public class Customer {
             inverseJoinColumns = @JoinColumn(name = "COUPON_ID"))
     private Set<Coupon> coupons = new HashSet<>();
 
+
     private String error;
 
 
@@ -73,6 +74,10 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Set<Coupon> getCoupons() {
+        return coupons;
     }
 }
 

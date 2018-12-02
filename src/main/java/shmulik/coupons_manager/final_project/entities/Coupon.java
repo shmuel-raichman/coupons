@@ -5,6 +5,8 @@ package shmulik.coupons_manager.final_project.entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 //import org.springframework.data.annotation.Id;
 
@@ -45,7 +47,11 @@ public class Coupon {
 	
 	@Column(name = "image_link")
 	private String imageLink;
-	
+
+
+	@ManyToMany(mappedBy = "coupons")
+	private Set<Customer> customers = new HashSet<>();
+
 	private String error;
 
 	public String getError() {
@@ -123,6 +129,8 @@ public class Coupon {
 	public void setImageLink(String imageLink) {
 		this.imageLink = imageLink;
 	}
-	
-	
+
+	public Set<Customer> getCustomers() {
+		return customers;
+	}
 }
