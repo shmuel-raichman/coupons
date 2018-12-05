@@ -23,7 +23,7 @@ public class Login {
     private CouponService couponService;
 
     @GetMapping("{id}")
-    public void addCouponToCustomer(@PathVariable("id") long id){
+    public Coupon addCouponToCustomer(@PathVariable("id") long id){
         long couponId = 1;
 
 //        Coupon coupon = new Coupon();
@@ -39,12 +39,12 @@ public class Login {
         Customer customer1= new Customer("hvjkfkj");
 
         // Create two tags
-        Coupon tag1 = new Coupon("Spring Boot");
+        Coupon coupon = new Coupon("Spring Boot");
         //Coupon tag2 = new Coupon("Hibernate");
 
 
         // Add tag references in the post
-        customer1.getCoupons().add(tag1);
+        customer1.getCoupons().add(coupon);
         //customer1.getCoupons().add(tag2);
 
         // Add post reference in the tags
@@ -52,7 +52,7 @@ public class Login {
         //tag2.getCustomers().add(customer1);
 
         customerRepo.save(customer1);
-
+        return coupon;
         // =======================================
     }
 

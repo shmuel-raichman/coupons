@@ -130,7 +130,7 @@ public class Coupon {
 		this.imageLink = imageLink;
 	}
 
-	public Set<Customer> getCustomers() {
-		return customers;
-	}
+//	public Set<Customer> getCustomers() {
+//		return customers;
+//	}
 }
