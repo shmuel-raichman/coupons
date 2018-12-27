@@ -25,9 +25,7 @@ public class Coupon {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private long id;
 	
-	// TO DO add annotations to make it auto generate table.
-	//private long id;
-	@Column(name = "title" , unique=true)
+  	@Column(name = "title" , unique=true)
 	private String title;
 	
 	@Column(name = "start_date")
@@ -57,6 +55,10 @@ public class Coupon {
 	public String getError() {
 		return error;
 	}
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "company_id")
+	private Company company;
 
 	public Coupon () {
 		
@@ -130,7 +132,11 @@ public class Coupon {
 		this.imageLink = imageLink;
 	}
 
-//	public Set<Customer> getCustomers() {
+	public Company getCompany() {
+		return company;
+	}
+
+	//	public Set<Customer> getCustomers() {
 //		return customers;
 //	}
 }

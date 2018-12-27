@@ -3,6 +3,7 @@ package shmulik.coupons_manager.final_project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import shmulik.coupons_manager.final_project.entities.Coupon;
 import shmulik.coupons_manager.final_project.entities.Customer;
 import shmulik.coupons_manager.final_project.services.interfaces.CustomerService;
 
@@ -37,6 +38,13 @@ public class CustomerController {
     public Customer updateCustomer(@RequestBody Customer customer) {
         return customerService.updateCustomer(customer);
     }
+
+    @PostMapping("/addCouponToCustomer")
+    public Coupon addCouponToCustomer(@RequestBody long customerId, long couponId) {
+        return customerService.addCouponToCustomer(couponId, customerId);
+
+    }
+
 
     @DeleteMapping("{id}")
     public boolean deleteCouponById(@PathVariable("id") int id) {

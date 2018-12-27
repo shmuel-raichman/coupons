@@ -2,8 +2,11 @@ package shmulik.coupons_manager.final_project.services.implementations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import shmulik.coupons_manager.final_project.entities.Coupon;
 import shmulik.coupons_manager.final_project.entities.Customer;
+import shmulik.coupons_manager.final_project.repositories.CouponRepo;
 import shmulik.coupons_manager.final_project.repositories.CustomerRepo;
+import shmulik.coupons_manager.final_project.services.interfaces.CouponService;
 import shmulik.coupons_manager.final_project.services.interfaces.CustomerService;
 
 import javax.transaction.Transactional;
@@ -14,17 +17,26 @@ import java.util.Optional;
 public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
-    private CustomerRepo customerService;
+    private CustomerRepo customerRepo;
+
+    @Autowired
+    private CouponRepo couponRepo;
+
+    @Autowired
+    private  CustomerService customerService;
+
+    @Autowired
+    private CouponService couponService;
 
     @Override
     public List<Customer> findAll() {
-        return customerService.findAll();
+        return customerRepo.findAll();
     }
 
 
     @Override
     public Customer findById(long id) {
-        Optional<Customer> optinal = customerService.findById(id);
+        Optional<Customer> optinal = customerRepo.findById(id);
         return optinal.orElse(null);
     }
 
@@ -32,7 +44,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Transactional
     public Customer createCustomer(Customer customer) {
 //        if(customer.getId() == 0) {
-            customerService.save(customer);
+            customerRepo.save(customer);
             return customer;
 //        }
 //        else {
@@ -54,20 +66,30 @@ public class CustomerServiceImpl implements CustomerService {
 //            //error.setAmount((Integer)null);
 //            return error;
 //        } else {
-            customerService.save(customer);
+            customerRepo.save(customer);
             return customer;
 //        }
     }
 
+    @Override
+    public Coupon addCouponToCustomer(long couponId, long customerId){
+        Customer customer = findById(customerId);
+        Coupon coupon = couponService.findById(couponId);
+
+        customer.getCoupons().add(coupon);
+        customerRepo.save(customer);
+        
+        return coupon;
+    }
 
     @Override
     @Transactional
     public boolean deleteCustomerById(long id) {
-        if(customerService.findById(id) == null) {
+        if(customerRepo.findById(id) == null) {
             return false;
         }
         else {
-            customerService.deleteById(id);
+            customerRepo.deleteById(id);
             return true;
         }
     }

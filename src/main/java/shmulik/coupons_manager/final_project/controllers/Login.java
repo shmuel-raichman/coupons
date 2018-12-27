@@ -23,7 +23,7 @@ public class Login {
     private CouponService couponService;
 
     @GetMapping("{id}")
-    public Coupon addCouponToCustomer(@PathVariable("id") long id){
+    public String addCouponToCustomer(@PathVariable("id") long id){
         long couponId = 1;
 
 //        Coupon coupon = new Coupon();
@@ -52,7 +52,7 @@ public class Login {
         //tag2.getCustomers().add(customer1);
 
         customerRepo.save(customer1);
-        return coupon;
+        return "fdlpso";
         // =======================================
     }
 
