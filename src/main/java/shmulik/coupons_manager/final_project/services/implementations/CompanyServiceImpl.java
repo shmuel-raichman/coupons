@@ -47,6 +47,7 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     @Transactional
     public Company updateCompany(Company company) {
+
 //        if(companyRepo.findById(company.getId()) == null) {
 //            Company error = new Company("customer not exist exist : can't create coupon using this method try createCustomer.");
 //            //error.setAmount((Integer)null);
