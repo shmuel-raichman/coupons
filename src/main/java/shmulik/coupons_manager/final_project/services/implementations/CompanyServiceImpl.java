@@ -3,7 +3,6 @@ package shmulik.coupons_manager.final_project.services.implementations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import shmulik.coupons_manager.final_project.entities.Company;
-import shmulik.coupons_manager.final_project.entities.Coupon;
 import shmulik.coupons_manager.final_project.repositories.CompanyRepo;
 import shmulik.coupons_manager.final_project.services.interfaces.CompanyService;
 import shmulik.coupons_manager.final_project.services.interfaces.CouponService;
@@ -64,15 +63,15 @@ public class CompanyServiceImpl implements CompanyService {
 //        }
     }
 
-    public Coupon addCouponToCompany(long couponId, long companyId){
-        Company company = findById(companyId);
-        Coupon coupon = couponService.findById(couponId);
-
-        company.getCoupons().add(coupon);
-        companyRepo.save(company);
-
-        return coupon;
-    }
+//    public Coupon addCouponToCompany(long couponId, long companyId){
+//        Company company = findById(companyId);
+//        Coupon coupon = couponService.findById(couponId);
+//
+//        company.getCoupons().add(coupon);
+//        companyRepo.save(company);
+//
+//        return coupon;
+//    }
 
     @Override
     @Transactional

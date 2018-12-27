@@ -4,8 +4,6 @@
 package shmulik.coupons_manager.final_project.entities;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
 
 /**
  * @author Android
@@ -28,10 +26,10 @@ public class Company {
     @Column(name = "email" , unique=true)
     private String email;
 
-    @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY,
-            mappedBy = "company")
-    private Set<Coupon> coupons = new HashSet<>();
+//    @OneToMany(cascade = CascadeType.ALL,
+//            fetch = FetchType.LAZY,
+//            mappedBy = "company")
+//    private Set<Coupon> coupons = new HashSet<>();
 
     private String error;
 
@@ -78,9 +76,9 @@ public class Company {
         this.email = email;
     }
 
-    public Set<Coupon> getCoupons() {
-        return coupons;
-    }
+//    public Set<Coupon> getCoupons() {
+//        return coupons;
+//    }
 
 //    public void setCoupons(Set<Coupon> coupons) {
 //        this.coupons = coupons;

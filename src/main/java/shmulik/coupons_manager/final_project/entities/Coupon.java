@@ -56,9 +56,9 @@ public class Coupon {
 		return error;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "company_id")
-	private Company company;
+//	@ManyToOne(fetch = FetchType.LAZY)
+//	@JoinColumn(name = "company_id")
+//	private Company company;
 
 	public Coupon () {
 		
@@ -132,9 +132,9 @@ public class Coupon {
 		this.imageLink = imageLink;
 	}
 
-	public Company getCompany() {
-		return company;
-	}
+//	public Company getCompany() {
+//		return company;
+//	}
 
 	//	public Set<Customer> getCustomers() {
 //		return customers;
