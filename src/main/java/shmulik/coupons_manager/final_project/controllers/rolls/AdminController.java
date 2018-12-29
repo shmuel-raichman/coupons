@@ -77,8 +77,10 @@ public class AdminController {
     }
 
     @PostMapping("/addCouponToCustomer")
-    public Coupon addCouponToCustomer(@RequestBody long customerId, long couponId) {
-        return adminFacade.addCouponToCustomer(couponId, customerId);
+    public Coupon addCouponToCustomer(@RequestParam("couponID") long couponID, @RequestParam("customerID") long customerID) {
+        //long couponID = (long)body.get("couponID");
+        //long customerID = (long)body.get("customerID");
+        return adminFacade.addCouponToCustomer(couponID,customerID);
 
     }
 
