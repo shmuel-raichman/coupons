@@ -1,59 +1,27 @@
-package shmulik.coupons_manager.final_project.controllers;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import shmulik.coupons_manager.final_project.entities.Coupon;
-import shmulik.coupons_manager.final_project.entities.Customer;
-import shmulik.coupons_manager.final_project.repositories.CustomerRepo;
-import shmulik.coupons_manager.final_project.services.interfaces.CouponService;
-import shmulik.coupons_manager.final_project.services.interfaces.CustomerService;
+
+import com.israbase.coupons.entities.User;
+import com.israbase.coupons.helpers.exceptions.UserNotFoundException;
+import com.israbase.coupons.services.api.SystemService;
 
 @RestController
-@RequestMapping("/rest/api/test")
-public class Login {
+public class LoginController {
 
     @Autowired
-    private CustomerRepo customerRepo;
-    @Autowired
-    private CustomerService customerService;
-    @Autowired
-    private CouponService couponService;
+    private SystemService systemService;
 
-    @GetMapping("{id}")
-    public String addCouponToCustomer(@PathVariable("id") long id){
-        long couponId = 1;
-
-//        Coupon coupon = new Coupon();
-//        Customer customer = customerService.findById(id);
-//        customer.getCoupons().add(couponService.findById(couponId));
-//        customerRepo.save(customer);
-//        return false;
-        //return couponService.findById(id).getCustomers().add(customerService.findById(couponId));
-
-        // =======================================
-
-        // Create a Post
-        Customer customer1= new Customer("hvjkfkj");
-
-        // Create two tags
-        Coupon coupon = new Coupon("Spring Boot");
-        //Coupon tag2 = new Coupon("Hibernate");
-
-
-        // Add tag references in the post
-        customer1.getCoupons().add(coupon);
-        //customer1.getCoupons().add(tag2);
-
-        // Add post reference in the tags
-        //tag1.getCustomers().add(customer1);
-        //tag2.getCustomers().add(customer1);
-
-        customerRepo.save(customer1);
-        return "fdlpso";
-        // =======================================
+    @GetMapping("/login")
+    public ResponseEntity<User> login(HttpServletRequest request) throws UserNotFoundException {
+        return ResponseEntity.ok().body(systemService.login(request));
     }
 
+    @GetMapping("/logoff")
+    public ResponseEntity<String> logout(HttpServletRequest request) {
+        return ResponseEntity.ok().body(systemService.logout(request));
+    }
 }
