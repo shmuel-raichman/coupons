@@ -57,6 +57,7 @@ deploy:
   script:
     - ls -la && pwd
     - apk add openssh && chmod 0600 ./gradle/id_rsa
+    - ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no smuelservice@35.243.185.205 "docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY"
     - ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no smuelservice@35.243.185.205 "docker pull $CI_REGISTRY_IMAGE"
     - ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no smuelservice@35.243.185.205 "docker stop my-app-instance"
     - ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no smuelservice@35.243.185.205 "docker run -dit --rm -p 8080:8080 -p 2220:2222 --name my-app-instance $CI_REGISTRY_IMAGE"
