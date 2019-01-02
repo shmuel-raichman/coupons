@@ -10,7 +10,7 @@ import com.israbase.coupons.helpers.exceptions.UserNotFoundException;
 import com.israbase.coupons.services.api.SystemService;
 
 @RestController
-public class LoginController {
+public class Login {
 
     @Autowired
     private SystemService systemService;
