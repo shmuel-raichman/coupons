@@ -11,6 +11,6 @@ public enum CouponCategory {
 	FOOD,
 	HEALTH,
 	BABY,
-	ENTERTAINMENT,
-	SPORTS,
+	//ENTERTAINMENT,
+	SPORTS
 }
