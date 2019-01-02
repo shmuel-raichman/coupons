@@ -57,9 +57,9 @@ deploy:
   script:
     - ls -la && pwd
     - apk add openssh && chmod 0600 ./gradle/id_rsa
-    - ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no sem@35.243.185.205 "docker pull $CI_REGISTRY_IMAGE"
-    - ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no sem@35.243.185.205 "docker stop my-app-instance"
-    - ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no sem@35.243.185.205 "docker run -dit --rm -p 8080:8080 -p 2220:2222 --name my-app-instance $CI_REGISTRY_IMAGE"
+    - ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no smuelservice@35.243.185.205 "docker pull $CI_REGISTRY_IMAGE"
+    - ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no smuelservice@35.243.185.205 "docker stop my-app-instance"
+    - ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no smuelservice@35.243.185.205 "docker run -dit --rm -p 8080:8080 -p 2220:2222 --name my-app-instance $CI_REGISTRY_IMAGE"
     #- ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no sem@35.243.170.169 gcloud container clusters get-credentials app-cluster --zone us-central1-a --project sinuous-axiom-213422
     #- ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no sem@35.243.170.169 "kubectl get pods -o name | grep my-app | xargs kubectl delete"
  
