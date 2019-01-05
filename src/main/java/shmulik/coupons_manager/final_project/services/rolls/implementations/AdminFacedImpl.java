@@ -4,7 +4,6 @@ package shmulik.coupons_manager.final_project.services.rolls.implementations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import shmulik.coupons_manager.final_project.entities.Company;
-import shmulik.coupons_manager.final_project.entities.Coupon;
 import shmulik.coupons_manager.final_project.entities.Customer;
 import shmulik.coupons_manager.final_project.services.interfaces.CompanyService;
 import shmulik.coupons_manager.final_project.services.interfaces.CustomerService;
@@ -81,7 +80,7 @@ public class AdminFacedImpl implements AdminFacade {
         return customerService.deleteCustomerById(id);
     }
 
-    public Coupon addCouponToCustomer(long couponId, long customerId){
-        return customerService.addCouponToCustomer(couponId, customerId);
-    }
+//    public Coupon addCouponToCustomer(long couponId, long customerId){
+//        return customerService.addCouponToCustomer(couponId, customerId);
+//    }
 }
