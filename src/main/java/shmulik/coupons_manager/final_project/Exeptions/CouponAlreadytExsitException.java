@@ -5,9 +5,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ResponseStatus(HttpStatus.ALREADY_REPORTED)
-public class CouponAlreadytExsitForCustomerException extends MainCouponsExeption{
+public class CouponAlreadytExsitException extends MainCouponsExeption{
 
-    public CouponAlreadytExsitForCustomerException(String msg) {
+
+    public CouponAlreadytExsitException(String msg) {
         super(msg);
     }
 

@@ -31,7 +31,7 @@ public class Coupon {
 	@Column(name = "start_date")
 	private Date startDate;
 	
-	@Column(name = "start_date", insertable=false, updatable=false)
+	@Column(name = "end_date")
 	private Date endDate;
 	
 	@Column(name = "amount")
@@ -40,7 +40,7 @@ public class Coupon {
 	@Column(name = "message")
 	private String message;
 	
-	@Column(name = "price", precision = 2)
+	@Column(name = "price")
 	private double price;
 	
 	@Column(name = "image_link")

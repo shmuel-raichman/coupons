@@ -4,7 +4,6 @@ package shmulik.coupons_manager.final_project.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import shmulik.coupons_manager.final_project.entities.Company;
-import shmulik.coupons_manager.final_project.entities.Coupon;
 import shmulik.coupons_manager.final_project.services.interfaces.CompanyService;
 
 import java.util.List;
@@ -44,8 +43,8 @@ public class CompanyControllerOld {
         return companyService.deleteCompanyById(id);
     }
 
-    @PostMapping("/createNewCoupon")
-    public Coupon createNewCoupon (@RequestBody Coupon coupon, @RequestParam("companyID") long companyID){
-       return companyService.createNewCoupon(coupon, companyID );
-    }
+//    @PostMapping("/createNewCoupon")
+//    public Coupon createNewCoupon (@RequestBody Coupon coupon, @RequestParam("companyID") long companyID){
+//       return companyService.createNewCoupon(coupon, companyID );
+//    }
 }
