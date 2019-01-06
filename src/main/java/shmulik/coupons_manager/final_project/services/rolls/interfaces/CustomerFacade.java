@@ -18,4 +18,6 @@ public interface CustomerFacade {
     Set<Coupon> getCouponsHistory(long customerID);
 
     Set<Coupon> getCouponUpToPrice(long customerID, double price);
+
+    Set<Coupon> getCouponbyType(long customerID, String category);
 }

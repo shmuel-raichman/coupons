@@ -17,10 +17,7 @@ public class CustomerController {
 
     @PostMapping("/addCouponToCustomer")
     public Coupon addCouponToCustomer(@RequestParam("couponID") long couponID, @RequestParam("customerID") long customerID) {
-        //long couponID = (long)body.get("couponID");
-        //long customerID = (long)body.get("customerID");
         return customerFacade.addCouponToCustomer(couponID,customerID);
-
     }
 
     @GetMapping("/getCouponsHistory/{id}")
@@ -29,7 +26,12 @@ public class CustomerController {
     }
 
     @PostMapping("/getCouponUpToPrice")
-    Set<Coupon> getCouponUpToPrice(@RequestParam("customerID") long customerID, @RequestParam("price") double price){
+    public Set<Coupon> getCouponUpToPrice(@RequestParam("customerID") long customerID, @RequestParam("price") double price){
         return  customerFacade.getCouponUpToPrice(customerID, price);
+    }
+
+    @PostMapping("/getCouponbyType")
+    public Set<Coupon> getCouponbyType(@RequestParam("customerID") long customerID, @RequestParam("category") String category){
+        return  customerFacade.getCouponbyType(customerID, category);
     }
 }

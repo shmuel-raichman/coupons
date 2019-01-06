@@ -46,6 +46,8 @@ public class Coupon {
 	@Column(name = "image_link")
 	private String imageLink;
 
+	@Column(name="couponCategory", nullable=false)
+	private CouponCategory couponCategory;
 
 	@ManyToMany(mappedBy = "coupons")
 	private Set<Customer> customers = new HashSet<>();
@@ -132,6 +134,13 @@ public class Coupon {
 		this.imageLink = imageLink;
 	}
 
+	public CouponCategory getCouponCategory() {
+		return couponCategory;
+	}
+
+	public void setCouponCategory(CouponCategory couponCategory) {
+		this.couponCategory = couponCategory;
+	}
 //	public Company getCompany() {
 //		return company;
 //	}

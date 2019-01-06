@@ -60,4 +60,16 @@ public class CustomerFacedImpl implements CustomerFacade {
         });
         return couponsMoreThen;
     }
+
+    public Set<Coupon> getCouponbyType(long customerID, String category){
+        Customer customer = customerService.findById(customerID);
+        Set<Coupon> coupons = customer.getCoupons();
+        Set<Coupon> couponsMoreThen = new HashSet<>();
+        coupons.forEach(coupon -> {
+            if(coupon.getCouponCategory().toString().equals(category)) {
+                couponsMoreThen.add(coupon);
+            }
+        });
+        return couponsMoreThen;
+    }
 }
