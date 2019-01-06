@@ -2,7 +2,9 @@
 package shmulik.coupons_manager.final_project.controllers.rolls;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.*;
+import shmulik.coupons_manager.final_project.Exeptions.CustomerAlreadyExistException;
 import shmulik.coupons_manager.final_project.entities.Company;
 import shmulik.coupons_manager.final_project.entities.Customer;
 import shmulik.coupons_manager.final_project.services.rolls.interfaces.AdminFacade;
@@ -46,7 +48,14 @@ public class AdminController {
     @PostMapping("/addNewCustomer")
     public Customer addNewCustomer(@RequestBody Customer customer) {
         if(customer.getId() == 0)
-            return adminFacade.addNewCustomer(customer);
+            try {
+                return adminFacade.addNewCustomer(customer);
+            }catch (DataIntegrityViolationException e){
+                String property = e.getMostSpecificCause().getMessage().split("'")[1];
+                property = property.contains("@") ? "Customer with this email " + property + " already exist." : "Customer with the name " + property + " already exist.";
+                throw new CustomerAlreadyExistException(property);
+            }
+//        MySQLIntegrityConstraintViolationException
         return null;
     }
 

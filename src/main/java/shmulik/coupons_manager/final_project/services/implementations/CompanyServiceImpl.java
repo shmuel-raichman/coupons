@@ -3,7 +3,9 @@ package shmulik.coupons_manager.final_project.services.implementations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import shmulik.coupons_manager.final_project.entities.Company;
+import shmulik.coupons_manager.final_project.entities.Coupon;
 import shmulik.coupons_manager.final_project.repositories.CompanyRepo;
+import shmulik.coupons_manager.final_project.repositories.CouponRepo;
 import shmulik.coupons_manager.final_project.services.interfaces.CompanyService;
 import shmulik.coupons_manager.final_project.services.interfaces.CouponService;
 
@@ -18,7 +20,13 @@ public class CompanyServiceImpl implements CompanyService {
     private CompanyRepo companyRepo;
 
     @Autowired
+    private CouponRepo couponRepo;
+
+    @Autowired
     private CouponService couponService;
+
+    @Autowired
+    private CompanyService companyService;
 
     @Override
     public List<Company> findAll() {
@@ -84,5 +92,23 @@ public class CompanyServiceImpl implements CompanyService {
             companyRepo.deleteById(id);
             return true;
         }
+    }
+
+    @Override
+    public Coupon createNewCoupon(Coupon coupon, long companyID){
+        Company company = companyService.findById(companyID);
+        couponService.createCoupon(coupon);
+//        if(!customer.getCoupons().contains(coupon)){
+            long newCouponId = couponService.findById(coupon.getId()).getId();
+            Coupon newCoupon = couponService.findById(coupon.getId());
+            company.getCoupons().add(newCoupon);
+//            company.setCoupons(Arrays.asList(newCoupon));
+            companyRepo.save(company);
+//            couponRepo.save(newCoupon);
+//            couponRepo.save(coupon);
+//        } else {
+//            throw new CouponAlreadytExsitForCustomerException("Coupon already exist for this customer.");
+//        }
+        return coupon;
     }
 }

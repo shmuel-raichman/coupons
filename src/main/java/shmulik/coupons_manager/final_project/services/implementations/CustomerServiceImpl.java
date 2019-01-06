@@ -2,6 +2,7 @@ package shmulik.coupons_manager.final_project.services.implementations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import shmulik.coupons_manager.final_project.Exeptions.CouponAlreadytExsitForCustomerException;
 import shmulik.coupons_manager.final_project.entities.Coupon;
 import shmulik.coupons_manager.final_project.entities.Customer;
 import shmulik.coupons_manager.final_project.repositories.CouponRepo;
@@ -76,9 +77,14 @@ public class CustomerServiceImpl implements CustomerService {
         Customer customer = findById(customerId);
         Coupon coupon = couponService.findById(couponId);
 
-        customer.getCoupons().add(coupon);
-        customerRepo.save(customer);
-        
+        if(!customer.getCoupons().contains(coupon)){
+            customer.getCoupons().add(coupon);
+            coupon.setAmount(coupon.getAmount()-1);
+            customerRepo.save(customer);
+            couponRepo.save(coupon);
+        } else {
+            throw new CouponAlreadytExsitForCustomerException("Coupon already exist for this customer.");
+        }
         return coupon;
     }
 
@@ -93,6 +99,4 @@ public class CustomerServiceImpl implements CustomerService {
             return true;
         }
     }
-
-
 }

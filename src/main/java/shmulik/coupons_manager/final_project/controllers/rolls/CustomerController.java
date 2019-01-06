@@ -3,6 +3,8 @@ package shmulik.coupons_manager.final_project.controllers.rolls;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import shmulik.coupons_manager.final_project.Exeptions.CouponOrCustomerNotExistException;
+import shmulik.coupons_manager.final_project.Exeptions.CustomerNotFoundException;
 import shmulik.coupons_manager.final_project.entities.Coupon;
 import shmulik.coupons_manager.final_project.services.rolls.interfaces.CustomerFacade;
 
@@ -17,12 +19,20 @@ public class CustomerController {
 
     @PostMapping("/addCouponToCustomer")
     public Coupon addCouponToCustomer(@RequestParam("couponID") long couponID, @RequestParam("customerID") long customerID) {
-        return customerFacade.addCouponToCustomer(couponID,customerID);
+        try {
+            return customerFacade.addCouponToCustomer(couponID,customerID);
+        } catch (NullPointerException e){
+            throw new CouponOrCustomerNotExistException("Either Coupon or Customer are not exist in the system.");
+        }
     }
 
     @GetMapping("/getCouponsHistory/{id}")
     public Set<Coupon> getCouponsHistory(@PathVariable("id") int id){
-        return customerFacade.getCouponsHistory(id);
+         try {
+             return customerFacade.getCouponsHistory(id);
+         } catch (NullPointerException e){
+             throw new CustomerNotFoundException("There is no customer with the give id.");
+         }
     }
 
     @PostMapping("/getCouponUpToPrice")

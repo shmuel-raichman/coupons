@@ -4,6 +4,8 @@
 package shmulik.coupons_manager.final_project.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Android
@@ -14,7 +16,7 @@ import javax.persistence.*;
 public class Company {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
     @Column(name = "compName" , unique=true)
@@ -26,9 +28,34 @@ public class Company {
     @Column(name = "email" , unique=true)
     private String email;
 
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "COMPANY_COUPON",
+            joinColumns = @JoinColumn(name = "COMPANY_ID"),
+            inverseJoinColumns = @JoinColumn(name = "COUPON_ID"))
+//    private Set<Coupon> coupons = new HashSet<>();
+    private List<Coupon> coupons = new ArrayList<>();
+
+
 //    @OneToMany(cascade = CascadeType.ALL,
 //            fetch = FetchType.LAZY,
 //            mappedBy = "company")
+//    private Set<Coupon> coupons = new HashSet<>();
+
+//    @OneToMany
+//    @JoinTable(name = "MY_JOIN_TABLE",
+//            joinColumns = {@JoinColumn(name = "MY_ENTITY_A_FK")},
+//            inverseJoinColumns = {@JoinColumn(name = "MY_ENTITY_B_FK")}
+//    )
+//    private List<EntityB> entityBList;
+//
+//    public List<EntityB> getEntityBList() {
+//        return entityBList;
+//    }
+
+//    @ManyToMany(fetch = FetchType.EAGER)
+//    @JoinTable(name = "CUSTOMER_COUPON",
+//            joinColumns = @JoinColumn(name = "CUSTOMER_ID"),
+//            inverseJoinColumns = @JoinColumn(name = "COUPON_ID"))
 //    private Set<Coupon> coupons = new HashSet<>();
 
     private String error;
@@ -76,10 +103,13 @@ public class Company {
         this.email = email;
     }
 
-//    public Set<Coupon> getCoupons() {
-//        return coupons;
-//    }
+    public List<Coupon> getCoupons() {
+        return coupons;
+    }
 
+    public void setCoupons(List<Coupon> coupons) {
+        this.coupons = coupons;
+    }
 //    public void setCoupons(Set<Coupon> coupons) {
 //        this.coupons = coupons;
 //    }

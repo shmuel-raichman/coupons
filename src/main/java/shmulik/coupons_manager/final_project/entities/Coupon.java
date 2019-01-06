@@ -22,7 +22,7 @@ public class Coupon {
 
 	
 	@Id 
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
   	@Column(name = "title" , unique=true)
@@ -52,15 +52,18 @@ public class Coupon {
 	@ManyToMany(mappedBy = "coupons")
 	private Set<Customer> customers = new HashSet<>();
 
+
+
+
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "COMPANY_ID", referencedColumnName = "COMPANY_ID")
+//	private Company company;
+
 	private String error;
 
 	public String getError() {
 		return error;
 	}
-
-//	@ManyToOne(fetch = FetchType.LAZY)
-//	@JoinColumn(name = "company_id")
-//	private Company company;
 
 	public Coupon () {
 		
