@@ -1,5 +1,5 @@
 // B"H
-package shmulik.coupons_manager.final_project.Exeptions;
+package shmulik.coupons_manager.final_project.messages.Exeptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

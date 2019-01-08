@@ -14,9 +14,6 @@ public class FinalProjectApplicationTests {
 		System.out.println("Hi Context load");
 	}
 
-	@Test
-	public void testTesting(){
-		System.out.println("test the testing");
-	}
+
 
 }

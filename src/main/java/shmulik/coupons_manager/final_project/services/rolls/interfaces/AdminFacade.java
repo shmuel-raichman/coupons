@@ -30,5 +30,7 @@ public interface AdminFacade {
 
     boolean deleteCustomerById(int id);
 
+    boolean deleteCompanyById(int id);
+
 //    Coupon addCouponToCustomer(long couponId, long customerId);
 }

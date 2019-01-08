@@ -80,6 +80,10 @@ public class AdminFacedImpl implements AdminFacade {
         return customerService.deleteCustomerById(id);
     }
 
+    public boolean deleteCompanyById(int id) {
+        return companyService.deleteCompanyById(id);
+    }
+
 //    public Coupon addCouponToCustomer(long couponId, long customerId){
 //        return customerService.addCouponToCustomer(couponId, customerId);
 //    }

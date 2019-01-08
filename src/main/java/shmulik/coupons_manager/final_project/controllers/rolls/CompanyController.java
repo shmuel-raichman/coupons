@@ -4,9 +4,12 @@ package shmulik.coupons_manager.final_project.controllers.rolls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.*;
-import shmulik.coupons_manager.final_project.Exeptions.CouponAlreadytExsitException;
+import shmulik.coupons_manager.final_project.messages.Exeptions.CouponAlreadytExsitException;
+import shmulik.coupons_manager.final_project.entities.Company;
 import shmulik.coupons_manager.final_project.entities.Coupon;
 import shmulik.coupons_manager.final_project.services.rolls.interfaces.CompanyFacade;
+
+import java.util.Set;
 
 @RestController
 @RequestMapping("/rest/api/company")
@@ -39,33 +42,38 @@ public class CompanyController {
     public Coupon updateCouponPriceDate(@RequestBody Coupon coupon)  {
         return companyFacade.updateCouponPrice(coupon.getId(), coupon.getPrice());
     }
-//
-//    @PostMapping("/addCouponToCustomer")
-//    public Coupon addCouponToCustomer(@RequestParam("couponID") long couponID, @RequestParam("customerID") long customerID) {
-//        return customerFacade.addCouponToCustomer(couponID,customerID);
-//    }
-//
-//    @GetMapping("/getCouponsHistory/{id}")
-//    public Set<Coupon> getCouponsHistory(@PathVariable("id") int id){
-//        return customerFacade.getCouponsHistory(id);
-//    }
-//
-//    @PostMapping("/getCouponUpToPrice")
-//    public Set<Coupon> getCouponUpToPrice(@RequestParam("customerID") long customerID, @RequestParam("price") double price){
-//        return  customerFacade.getCouponUpToPrice(customerID, price);
-//    }
-//
-//    @PostMapping("/getCouponbyType")
-//    public Set<Coupon> getCouponbyType(@RequestParam("customerID") long customerID, @RequestParam("category") String category){
-//        return  customerFacade.getCouponbyType(customerID, category);
-//    }
 
-//    @PostMapping("/addCouponToCustomer")
-//    public Coupon addCouponToCustomer(@RequestParam("couponID") long couponID, @RequestParam("customerID") long customerID) {
-//        try {
-//            return companyFacade. .addCouponToCustomer(couponID,customerID);
-//        } catch (NullPointerException e){
-//            throw new CouponOrCustomerNotExistException("Either Coupon or Customer are not exist in the system.");
-//        }
-//    }
+    @GetMapping("/getAllCouponsForCompany/{companyID}")
+    public Set<Coupon> getAllCouponsForCompany(@PathVariable("companyID") long companyID){
+        return companyFacade.getAllCouponsForCompany(companyID);
+    }
+
+    @PostMapping("/getCouponsForCompanyByPrice")
+    public Set<Coupon> getCouponsForCompanyByPrice(@RequestParam("companyID") long companyID, @RequestParam("price") double price){
+        return  companyFacade.getCouponsForCompanyByPrice(companyID, price);
+    }
+
+    @PostMapping("/getCouponsForCompanyByType")
+    public Set<Coupon> getCouponsForCompanyByType(@RequestParam("companyID") long companyID, @RequestParam("category") String category){
+        return  companyFacade.getCouponsForCompanyByType(companyID, category);
+    }
+
+    @PostMapping("/getCouponsForCompanyByEndDate")
+    public Set<Coupon> getCouponsForCompanyByEndDate(@RequestBody Coupon coupon){
+        return  companyFacade.getCouponsForCompanyByEndDate(coupon.getId(), coupon.getEndDate());
+    }
+
+    @GetMapping("/getMyCompany/{companyID}")
+    public Company getMyCompany(@PathVariable("companyID") long companyID){
+        // ----------  To not return company coupons jest details --------
+        Company company = new Company();
+        Company myCompany = companyFacade.getMyCompany(companyID);
+
+        company.setPassword(myCompany.getPassword());
+        company.setId(myCompany.getId());
+        company.setEmail(myCompany.getEmail());
+        company.setCompName(myCompany.getCompName());
+        // ----------------------------------------------------------------
+        return company;
+    }
 }

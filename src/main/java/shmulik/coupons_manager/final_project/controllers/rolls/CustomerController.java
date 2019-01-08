@@ -3,8 +3,8 @@ package shmulik.coupons_manager.final_project.controllers.rolls;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import shmulik.coupons_manager.final_project.Exeptions.CouponOrCustomerNotExistException;
-import shmulik.coupons_manager.final_project.Exeptions.CustomerNotFoundException;
+import shmulik.coupons_manager.final_project.messages.Exeptions.CouponOrCustomerNotExistException;
+import shmulik.coupons_manager.final_project.messages.Exeptions.CustomerNotFoundException;
 import shmulik.coupons_manager.final_project.entities.Coupon;
 import shmulik.coupons_manager.final_project.services.rolls.interfaces.CustomerFacade;
 

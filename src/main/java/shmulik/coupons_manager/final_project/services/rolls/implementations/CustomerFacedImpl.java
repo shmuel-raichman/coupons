@@ -20,26 +20,6 @@ public class CustomerFacedImpl implements CustomerFacade {
     @Autowired
     private CustomerService customerService;
 
-//    public Customer addNewCustomer(Customer customer) {
-//        return customerService.createCustomer(customer);
-//    }
-
-//    public Customer updateCustomerEmail(long customerId, String email) {
-//        Customer customer = customerService.findById(customerId);
-//        customer.setEmail(email);
-//        return customerService.updateCustomer(customer);
-//    }
-
-//    public Customer updateCustomerPassword(long customerId, String password) {
-//        Customer customer = customerService.findById(customerId);
-//        customer.setPassword(password);
-//        return customerService.updateCustomer(customer);
-//    }
-
-//    public boolean deleteCustomerById(int id) {
-//        return customerService.deleteCustomerById(id);
-//    }
-
     public Coupon addCouponToCustomer(long couponId, long customerId){
         return customerService.addCouponToCustomer(couponId, customerId);
     }

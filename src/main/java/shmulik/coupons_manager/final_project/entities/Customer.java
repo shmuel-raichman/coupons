@@ -30,18 +30,7 @@ public class Customer {
     private Set<Coupon> coupons = new HashSet<>();
 
 
-    private String error;
-
-
     public Customer() {
-    }
-
-    public Customer (String errorMsg) {
-        this.error = errorMsg;
-    }
-
-    public String getError() {
-        return error;
     }
 
     public long getId() {
@@ -80,6 +69,14 @@ public class Customer {
         return coupons;
     }
 
-
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", custName='" + custName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }
 

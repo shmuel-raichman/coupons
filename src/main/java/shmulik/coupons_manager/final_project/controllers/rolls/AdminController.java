@@ -4,7 +4,7 @@ package shmulik.coupons_manager.final_project.controllers.rolls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.web.bind.annotation.*;
-import shmulik.coupons_manager.final_project.Exeptions.CustomerAlreadyExistException;
+import shmulik.coupons_manager.final_project.messages.Exeptions.CustomerAlreadyExistException;
 import shmulik.coupons_manager.final_project.entities.Company;
 import shmulik.coupons_manager.final_project.entities.Customer;
 import shmulik.coupons_manager.final_project.services.rolls.interfaces.AdminFacade;
@@ -55,7 +55,6 @@ public class AdminController {
                 property = property.contains("@") ? "Customer with this email " + property + " already exist." : "Customer with the name " + property + " already exist.";
                 throw new CustomerAlreadyExistException(property);
             }
-//        MySQLIntegrityConstraintViolationException
         return null;
     }
 
@@ -84,12 +83,10 @@ public class AdminController {
         return adminFacade.deleteCustomerById(id);
     }
 
-//    @PostMapping("/addCouponToCustomer")
-//    public Coupon addCouponToCustomer(@RequestParam("couponID") long couponID, @RequestParam("customerID") long customerID) {
-//        //long couponID = (long)body.get("couponID");
-//        //long customerID = (long)body.get("customerID");
-//        return adminFacade.addCouponToCustomer(couponID,customerID);
-//
-//    }
+    @DeleteMapping("/deleteCompanyById/{id}")
+    public boolean deleteCompanyById(@PathVariable("id") int id) {
+        return adminFacade.deleteCompanyById(id);
+    }
+
 
 }

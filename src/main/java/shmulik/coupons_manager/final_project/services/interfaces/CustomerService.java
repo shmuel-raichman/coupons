@@ -18,4 +18,8 @@ public interface CustomerService {
     boolean deleteCustomerById(long id);
 
     Coupon addCouponToCustomer(long couponId, long customerId);
+
+    Customer findByEmail(String email);
+
+    boolean login(String customerEmail, String customerPassword);
 }

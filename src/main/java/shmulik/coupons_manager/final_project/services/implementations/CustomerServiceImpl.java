@@ -2,7 +2,8 @@ package shmulik.coupons_manager.final_project.services.implementations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import shmulik.coupons_manager.final_project.Exeptions.CouponAlreadytExsitForCustomerException;
+import shmulik.coupons_manager.final_project.messages.Exeptions.CouponAlreadytExsitForCustomerException;
+import shmulik.coupons_manager.final_project.messages.Exeptions.CustomerNotFoundException;
 import shmulik.coupons_manager.final_project.entities.Coupon;
 import shmulik.coupons_manager.final_project.entities.Customer;
 import shmulik.coupons_manager.final_project.repositories.CouponRepo;
@@ -97,6 +98,25 @@ public class CustomerServiceImpl implements CustomerService {
         else {
             customerRepo.deleteById(id);
             return true;
+        }
+    }
+
+    @Override
+    public Customer findByEmail(String email) {
+
+            Optional<Customer> optinal = Optional.ofNullable(customerRepo.findByEmail(email));
+        if(!optinal.isPresent())
+            throw new CustomerNotFoundException("Customer with the email address '" + email + "'  not found. ");
+            return optinal.orElse(null);
+
+    }
+
+    @Override
+    public boolean login(String customerEmail, String customerPassword){
+        try {
+            return findByEmail(customerEmail).getPassword().equals(customerPassword);
+        } catch (NullPointerException e) {
+            throw new CustomerNotFoundException("Customer with the email address '" + customerEmail + "'  not found. ");
         }
     }
 }

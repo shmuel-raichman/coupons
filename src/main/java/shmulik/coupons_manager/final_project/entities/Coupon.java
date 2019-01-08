@@ -59,18 +59,9 @@ public class Coupon {
 //	@JoinColumn(name = "COMPANY_ID", referencedColumnName = "COMPANY_ID")
 //	private Company company;
 
-	private String error;
-
-	public String getError() {
-		return error;
-	}
 
 	public Coupon () {
 		
-	}
-
-	public Coupon (String errorMsg) {
-		this.error = errorMsg;
 	}
 
 	public long getId() {
@@ -151,4 +142,19 @@ public class Coupon {
 	//	public Set<Customer> getCustomers() {
 //		return customers;
 //	}
+
+	@Override
+	public String toString() {
+		return "Coupon{" +
+				"id=" + id +
+				", title='" + title + '\'' +
+				", startDate=" + startDate +
+				", endDate=" + endDate +
+				", amount=" + amount +
+				", message='" + message + '\'' +
+				", price=" + price +
+				", imageLink='" + imageLink + '\'' +
+				", couponCategory=" + couponCategory +
+				'}';
+	}
 }

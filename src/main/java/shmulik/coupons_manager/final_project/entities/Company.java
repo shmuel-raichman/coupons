@@ -4,8 +4,8 @@
 package shmulik.coupons_manager.final_project.entities;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author Android
@@ -33,7 +33,7 @@ public class Company {
             joinColumns = @JoinColumn(name = "COMPANY_ID"),
             inverseJoinColumns = @JoinColumn(name = "COUPON_ID"))
 //    private Set<Coupon> coupons = new HashSet<>();
-    private List<Coupon> coupons = new ArrayList<>();
+    private Set<Coupon> coupons = new HashSet<>();
 
 
 //    @OneToMany(cascade = CascadeType.ALL,
@@ -58,17 +58,7 @@ public class Company {
 //            inverseJoinColumns = @JoinColumn(name = "COUPON_ID"))
 //    private Set<Coupon> coupons = new HashSet<>();
 
-    private String error;
-
     public Company() {
-    }
-
-    public Company (String errorMsg) {
-        this.error = errorMsg;
-    }
-
-    public String getError() {
-        return error;
     }
 
     public long getId() {
@@ -103,14 +93,24 @@ public class Company {
         this.email = email;
     }
 
-    public List<Coupon> getCoupons() {
+    public Set<Coupon> getCoupons() {
         return coupons;
     }
 
-    public void setCoupons(List<Coupon> coupons) {
+    public void setCoupons(Set<Coupon> coupons) {
         this.coupons = coupons;
     }
 //    public void setCoupons(Set<Coupon> coupons) {
 //        this.coupons = coupons;
 //    }
+
+    @Override
+    public String toString() {
+        return "Company{" +
+                "id=" + id +
+                ", compName='" + compName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

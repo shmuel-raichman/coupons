@@ -18,4 +18,8 @@ public interface CompanyService {
     boolean deleteCompanyById(long id);
 
     Coupon createNewCoupon(Coupon coupon, long companyID);
+
+    Company findByEmail(String email);
+
+    boolean login(String companyEmail, String companyPassword);
 }

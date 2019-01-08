@@ -2,6 +2,7 @@ package shmulik.coupons_manager.final_project.services.implementations;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import shmulik.coupons_manager.final_project.messages.Exeptions.CompanyNotFoundException;
 import shmulik.coupons_manager.final_project.entities.Company;
 import shmulik.coupons_manager.final_project.entities.Coupon;
 import shmulik.coupons_manager.final_project.repositories.CompanyRepo;
@@ -110,5 +111,25 @@ public class CompanyServiceImpl implements CompanyService {
 //            throw new CouponAlreadytExsitForCustomerException("Coupon already exist for this customer.");
 //        }
         return coupon;
+    }
+
+
+    @Override
+    public Company findByEmail(String email) {
+
+        Optional<Company> optinal = Optional.ofNullable(companyRepo.findByEmail(email));
+        if(!optinal.isPresent())
+            throw new CompanyNotFoundException("Company with the email address '" + email + "'  not found. ");
+        return optinal.orElse(null);
+
+    }
+
+    @Override
+    public boolean login(String companyEmail, String companyPassword){
+        try {
+            return findByEmail(companyEmail).getPassword().equals(companyPassword);
+        } catch (NullPointerException e) {
+            throw new CompanyNotFoundException("Company with the email address '" + companyEmail + "'  not found. ");
+        }
     }
 }
