@@ -12,6 +12,7 @@ import shmulik.coupons_manager.final_project.services.rolls.interfaces.CompanyFa
 import java.util.Set;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/rest/api/company")
 public class CompanyController {
 
@@ -53,7 +54,7 @@ public class CompanyController {
         return  companyFacade.getCouponsForCompanyByPrice(companyID, price);
     }
 
-    @PostMapping("/getCouponsForCompanyByType")
+    @GetMapping("/getCouponsForCompanyByType")
     public Set<Coupon> getCouponsForCompanyByType(@RequestParam("companyID") long companyID, @RequestParam("category") String category){
         return  companyFacade.getCouponsForCompanyByType(companyID, category);
     }

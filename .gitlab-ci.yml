@@ -60,7 +60,7 @@ deploy:
     - apk add openssh && chmod 0600 ./gradle/id_rsa
     - ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no smuelservice@35.243.185.205 "docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY"
     - ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no smuelservice@35.243.185.205 "docker pull $CI_REGISTRY_IMAGE"
-    - ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no smuelservice@35.243.185.205 "docker stop my-app-instance"
+    - (if ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no smuelservice@35.243.185.205 "docker stop my-app-instance" ; then echo "Stoped"; else echo "Exception container dont exist"; fi);
     - ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no smuelservice@35.243.185.205 "docker run -dit --rm -p 8080:8080 -p 2220:2222 --name my-app-instance $CI_REGISTRY_IMAGE"
     #- ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no sem@35.243.170.169 gcloud container clusters get-credentials app-cluster --zone us-central1-a --project sinuous-axiom-213422
     #- ssh -i ./gradle/id_rsa -o StrictHostKeyChecking=no sem@35.243.170.169 "kubectl get pods -o name | grep my-app | xargs kubectl delete"

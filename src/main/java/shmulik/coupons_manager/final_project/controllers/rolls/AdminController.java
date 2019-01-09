@@ -12,6 +12,7 @@ import shmulik.coupons_manager.final_project.services.rolls.interfaces.AdminFaca
 import java.util.List;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/rest/api/admin")
 public class AdminController {
 

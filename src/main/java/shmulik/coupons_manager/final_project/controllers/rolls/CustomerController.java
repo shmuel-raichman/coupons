@@ -11,6 +11,7 @@ import shmulik.coupons_manager.final_project.services.rolls.interfaces.CustomerF
 import java.util.Set;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/rest/api/customer")
 public class CustomerController {
 

@@ -29,7 +29,7 @@ public class ScheduledTasks {
 
     @Scheduled(cron = scheduledTime)
     public void scheduleTaskWithCronExpression() {
-        logger.info("Cron Task :: Execution Time - {} - {} ", dateFormatter.format(LocalDateTime.now()) , dateTimeFormatter.format(LocalDateTime.now()));
+        logger.info("Cron Task :: Execution Time - {} ", dateFormatter.format(LocalDateTime.now()) );
         logger.info("Current Thread : {}", Thread.currentThread().getName());
     }
 }

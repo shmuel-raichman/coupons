@@ -2,10 +2,7 @@
 package shmulik.coupons_manager.final_project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import shmulik.coupons_manager.final_project.entities.Company;
 import shmulik.coupons_manager.final_project.entities.Customer;
 import shmulik.coupons_manager.final_project.services.interfaces.CompanyService;
@@ -13,6 +10,7 @@ import shmulik.coupons_manager.final_project.services.interfaces.CustomerService
 import shmulik.coupons_manager.final_project.services.rolls.interfaces.AdminFacade;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/rest/api/test")
 public class TestController {
 

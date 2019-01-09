@@ -31,38 +31,21 @@ public class CouponServiceImpl implements CouponService {
     @Override
     @Transactional
     public Coupon createCoupon(Coupon coupon) {
-//        if(couponRepo.findById(coupon.getId()) == null) {
-            couponRepo.save(coupon);
-            return coupon;
-//        }
-//        else {
-//            return new Coupon("coupon already exist: can't update using this method try updateCoupon.");
-//        }
+        couponRepo.save(coupon);
+        return coupon;
     }
 
     @Override
     @Transactional
     public Coupon updateCoupon(Coupon coupon) {
-//        if(couponRepo.findById(coupon.getId()) == null) {
-//            Coupon error = new Coupon("error: couponRepo.findById(coupon.getId()) == null");
-//            //error.setAmount((Integer)null);
-//            return error;
-//
-////        }
-//        else if(coupon.getId() == 0){
-//            Coupon error = new Coupon("no id to update: can't update unknown coupon please supply ID.");
-//            //error.setAmount((Integer)null);
-//            return error;
-//        } else {
-            couponRepo.save(coupon);
-            return coupon;
-//        }
+        couponRepo.save(coupon);
+        return coupon;
     }
 
     @Override
     @Transactional
     public boolean deleteCouponById(long id) {
-        if(couponRepo.findById(id) == null) {
+        if(!couponRepo.findById(id).isPresent()) {
             return false;
         }
         else {
