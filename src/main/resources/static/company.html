@@ -57,26 +57,62 @@
         <p class="lead" >this site is for my java course project WORK IN PROGRESS Nothing is working here for now</p>
         <a href="http://35.243.170.169:8080/rest/api/coupons/" class="btn btn-primary btn-lg">Call to action!</a>
       </header>
+            <!--<div id="couponsTableDivold">-->
+                <!--<table id="couponsTable" class="table table-sm">-->
+                    <!--<thead>-->
+                      <!--<tr>-->
+                        <!--<th scope="col">#</th>-->
+                        <!--<th scope="col">ID</th>-->
+                        <!--<th scope="col">Tilte</th>-->
+                        <!--<th scope="col">Start Date</th>-->
+                        <!--<th scope="col">End Date</th>-->
+                        <!--<th scope="col">Amount</th>-->
+                        <!--<th scope="col">Message</th>-->
+                        <!--<th scope="col">Price</th>-->
+                        <!--<th scope="col">Image Link</th>-->
+                        <!--<th scope="col">Coupon Category</th>-->
+                      <!--</tr>-->
+                    <!--</thead>-->
+                    <!--<tbody>-->
+                    <!--</tbody>-->
+                  <!--</table>-->
+            <!--</div>-->
+        <div>
+          <div class="row">
+            <h2 class="text-center">All Our Coupons</h2>
             <div id="couponsTableDiv">
-                <table id="couponsTable" class="table table-sm">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">ID</th>
-                        <th scope="col">Tilte</th>
-                        <th scope="col">Start Date</th>
-                        <th scope="col">End Date</th>
-                        <th scope="col">Amount</th>
-                        <th scope="col">Message</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Image Link</th>
-                        <th scope="col">Coupon Category</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                  </table>
+              <a id="do_not_jump"></a>
+              <table id="couponsTable" class="table table-striped table-bordered table-sm">
+                <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">ID</th>
+                  <th scope="col">Tilte</th>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">End Date</th>
+                  <th scope="col">Amount</th>
+                  <th scope="col">Message</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Image Link</th>
+                  <th scope="col">Coupon Category</th>
+                  <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                </tbody>
+              </table>
+              <div>
+                Choose category to show<br>
+                <select id="category" class="form-control">
+                  <option>All Categories</option>
+                  <option>BABY</option>
+                  <option>HEALTH</option>
+                  <option>FOOD</option>
+                  <option>SPORTS</option>
+                </select>
+              </div>
             </div>
+        </div>
       </div>
       <!-- /.row -->
 
