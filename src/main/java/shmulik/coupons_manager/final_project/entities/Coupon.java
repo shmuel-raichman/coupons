@@ -3,11 +3,10 @@
  */
 package shmulik.coupons_manager.final_project.entities;
 
-import org.hibernate.validator.constraints.UniqueElements;
-
-import java.util.Date;
-
 import javax.persistence.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 //import org.springframework.data.annotation.Id;
 
@@ -16,32 +15,23 @@ import javax.persistence.*;
  *
  */
 @Entity
-@Table(name = "coupons" ,uniqueConstraints={@UniqueConstraint(columnNames={"title"})})
+@Table(name = "coupons")
 public class Coupon {
-	
-//	ID � LONG, PK
-//	TITLE - STRING ( short description )
-//	START_DATE � DATE (creation date in the system )
-//	END_DATE � DATE (Expiration date )
-//	AMOUNT � INTEGER (amount of coupons in stock)
+
 //	TYPE � ENUM (STRING) ( category - food,electrecity, vication , fun ) ----------------------
-//	MESSAGE � STRING (coupon describe text )
-//	PRICE � DOUBLE (coupon price )
-//	IMAGE � STRING (link)
+
 	
 	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	// TO DO add annotations to make it auto generate table.
-	//private long id;
-	@Column(name = "title" , unique=true)
+  	@Column(name = "title" , unique=true)
 	private String title;
 	
 	@Column(name = "start_date")
 	private Date startDate;
 	
-	@Column(name = "start_date", insertable=false, updatable=false)
+	@Column(name = "end_date")
 	private Date endDate;
 	
 	@Column(name = "amount")
@@ -50,14 +40,26 @@ public class Coupon {
 	@Column(name = "message")
 	private String message;
 	
-	@Column(name = "price", precision = 2)
+	@Column(name = "price")
 	private double price;
 	
 	@Column(name = "image_link")
 	private String imageLink;
-	
-	
-	
+
+	@Column(name="couponCategory", nullable=false)
+	private CouponCategory couponCategory;
+
+	@ManyToMany(mappedBy = "coupons")
+	private Set<Customer> customers = new HashSet<>();
+
+
+
+
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "COMPANY_ID", referencedColumnName = "COMPANY_ID")
+//	private Company company;
+
+
 	public Coupon () {
 		
 	}
@@ -125,6 +127,34 @@ public class Coupon {
 	public void setImageLink(String imageLink) {
 		this.imageLink = imageLink;
 	}
-	
-	
+
+	public CouponCategory getCouponCategory() {
+		return couponCategory;
+	}
+
+	public void setCouponCategory(CouponCategory couponCategory) {
+		this.couponCategory = couponCategory;
+	}
+//	public Company getCompany() {
+//		return company;
+//	}
+
+	//	public Set<Customer> getCustomers() {
+//		return customers;
+//	}
+
+	@Override
+	public String toString() {
+		return "Coupon{" +
+				"id=" + id +
+				", title='" + title + '\'' +
+				", startDate=" + startDate +
+				", endDate=" + endDate +
+				", amount=" + amount +
+				", message='" + message + '\'' +
+				", price=" + price +
+				", imageLink='" + imageLink + '\'' +
+				", couponCategory=" + couponCategory +
+				'}';
+	}
 }
